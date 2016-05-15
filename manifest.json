@@ -9,5 +9,9 @@
         "default_icon": "default-icon.png",
         "default_title": "learn-chrome-extension",
         "default_popup": "default-popup.html"
-    }
+    },
+    
+    "permissions": [
+      "tabs"
+    ]
 }
