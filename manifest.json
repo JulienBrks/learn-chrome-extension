@@ -1,0 +1,7 @@
+{
+    "manifest_version": 2,
+
+    "version": "0.0.1",
+    "name": "learn-chrome-extension",
+    "description": "Help to learn chrome extension"
+}
