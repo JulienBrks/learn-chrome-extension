@@ -6,6 +6,7 @@
       isReloadCheckbox.checked = true;
     }
   });
+
   isReloadCheckbox.onclick = function(e) {
     chrome.storage.sync.set({
       isReload: isReloadCheckbox.checked

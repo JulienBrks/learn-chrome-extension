@@ -24,5 +24,10 @@
       // Not recommended; only provided for backwards compatibility,
       // and will be unsupported in a future version of Chrome (TBD).
       "open_in_tab": false
+    },
+    
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
     }
 }
