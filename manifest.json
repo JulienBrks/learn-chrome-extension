@@ -3,5 +3,11 @@
 
     "version": "0.0.1",
     "name": "learn-chrome-extension",
-    "description": "Help to learn chrome extension"
+    "description": "Help to learn chrome extension",
+    
+    "browser_action": {
+        "default_icon": "default-icon.png",
+        "default_title": "learn-chrome-extension",
+        "default_popup": "default-popup.html"
+    }
 }
