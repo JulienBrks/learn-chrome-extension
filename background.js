@@ -6,7 +6,7 @@
     chrome.storage.sync.get('removedUrls', function(result) {
       var storedRemovedUrls = result.removedUrls;
       if (storedRemovedUrls) {
-        storedRemovedUrls.push({
+        storedRemovedUrls.unshift({
           url: tabToUrl[tabId],
           title: tabToTitle[tabId]
         });
@@ -31,12 +31,21 @@
   function onInputChanged(text, suggestCb) {
     chrome.storage.sync.get('removedUrls', function(result) {
       var suggestResultList = [],
-        suggestResult;
+        suggestResult,
+        url,
+        title;
       for (var iRemovedUrls = 0; iRemovedUrls < result.removedUrls.length; iRemovedUrls++) {
         suggestResult = {};
-        suggestResult.content = result.removedUrls[iRemovedUrls].url;
-        suggestResult.description = result.removedUrls[iRemovedUrls].title;
-        suggestResultList.push(suggestResult);
+        url = result.removedUrls[iRemovedUrls].url;
+        title = result.removedUrls[iRemovedUrls].title;
+        suggestResult.content = url;
+        suggestResult.description = title;
+        
+        if ((url && url.toLocaleLowerCase().includes(text.toLocaleLowerCase())) || (title &&    title.toLocaleLowerCase().includes(text.toLocaleLowerCase()))) {
+          suggestResultList.unshift(suggestResult);
+        } else {
+          suggestResultList.push(suggestResult);
+        }
       }
       suggestCb(suggestResultList);
     });
